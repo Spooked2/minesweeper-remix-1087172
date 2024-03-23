@@ -16,6 +16,8 @@ Darker grey: rgb(128, 128, 128); #808080;
 
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
     font-family: windows98, sans-serif;
 }
 
@@ -29,11 +31,17 @@ body {
     color: #FFFFFF;
 }
 
+dialog {
+    padding: 3px;
+    margin: auto;
+}
+
 div>img {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     object-fit: contain;
 }
+
 
 .indent {
     background-color: rgb(192, 192, 192);
@@ -59,27 +67,105 @@ div>img {
     height: 90vh;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
+    gap: 5px;
 }
 
 .shortcut {
-    width: 8vw;
-    height: fit-content;
+    width: 100px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5vw;
+    padding: 2px;
     justify-content: space-evenly;
 }
 
 .shortcut>div {
-    width: 50%;
-    height: 50%;
+    width: 50px;
+    height: 50px;
 }
 
 .shortcut>p {
-    font-size: 0.8rem;
+    font-size: 15px;
 }
+
+.window_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: darkblue;
+    color: white;
+    height: 30px;
+    padding: 5px;
+}
+
+.program_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.program_name>div {
+    max-width: 15px;
+}
+
+.program_name>h3 {
+    font-size: 1rem;
+}
+
+.window_buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    gap: 4px;
+}
+
+#minesweeper_window {
+    width: 500px;
+    height: 700px;
+}
+
+#minesweeper_container {
+    padding: 13px;
+}
+
+#minesweeper_stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*height: 58px;*/
+    padding: 13px;
+}
+
+#mine_count,
+#timer {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    background-color: black;
+    gap: 2px;
+}
+
+#mine_count>div,
+#timer>div {
+    max-width: 22px;
+    max-height: 42px;
+}
+
+#smiley {
+    display: flex;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+}
+
+#smiley>div {
+    max-height: 42px;
+    max-width: 42px;
+}
+
 
 
 
