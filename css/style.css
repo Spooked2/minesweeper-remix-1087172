@@ -33,10 +33,10 @@ body {
 
 dialog {
     padding: 3px;
-    margin: auto;
+    margin: 15vh auto;
 }
 
-div>img {
+div > img {
     width: 100%;
     /*height: 100%;*/
     object-fit: contain;
@@ -80,12 +80,12 @@ div>img {
     justify-content: space-evenly;
 }
 
-.shortcut>div {
+.shortcut > div {
     width: 50px;
     height: 50px;
 }
 
-.shortcut>p {
+.shortcut > p {
     font-size: 15px;
 }
 
@@ -106,11 +106,11 @@ div>img {
     align-items: center;
 }
 
-.program_name>div {
+.program_name > div {
     max-width: 15px;
 }
 
-.program_name>h3 {
+.program_name > h3 {
     font-size: 1rem;
 }
 
@@ -122,12 +122,16 @@ div>img {
 }
 
 #minesweeper_window {
-    width: 500px;
-    height: 700px;
+    width: fit-content;
+    height: fit-content;
 }
 
 #minesweeper_container {
     padding: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 #minesweeper_stats {
@@ -148,8 +152,8 @@ div>img {
     gap: 2px;
 }
 
-#mine_count>div,
-#timer>div {
+#mine_count > div,
+#timer > div {
     max-width: 22px;
     max-height: 42px;
 }
@@ -161,13 +165,33 @@ div>img {
     height: 42px;
 }
 
-#smiley>div {
+#smiley > div {
     max-height: 42px;
     max-width: 42px;
 }
 
+#minesweeper_field {
+    display: grid;
 
+}
 
+.tile {
+    background-color: rgb(192, 192, 192);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.tile img {
+    object-fit: contain;
+}
+
+.filled {
+    box-shadow: inset -1px -1px #808080,
+    inset 1px 1px #FFFFFF,
+    inset -2px -2px #808080,
+    inset 2px 2px #FFFFFF
+}
 
 
 footer {
