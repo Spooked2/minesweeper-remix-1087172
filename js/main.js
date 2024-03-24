@@ -757,9 +757,12 @@ function changeDifficulty(e) {
     arcadeMode = e.target.value === 'arcade';
 
     if (arcadeMode) {
+        document.getElementById('arcade_stats').style.display = 'flex';
         arcadeLoss = true;
         resetMinesweeper(e);
         return;
+    } else {
+        document.getElementById('arcade_stats').style.display = 'none';
     }
 
     setMinesweeperField();
