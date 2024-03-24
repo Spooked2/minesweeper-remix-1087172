@@ -86,8 +86,8 @@
                         </div>
 
                         <div>
-                            <input type="radio" name="difficulty" id="arcade" value="arcade" disabled>
-                            <label for="arcade"><u>A</u>rcade</label>
+                            <input type="radio" name="difficulty" id="arcade" value="arcade" class="hidden">
+                            <label for="arcade" class="hidden"><u>A</u>rcade</label>
                         </div>
 
                     </div>
@@ -134,9 +134,7 @@
             </div>
 
             <div class="extrude" id="reset_button">
-                <div>
                     <img src="images/smiley_happy.png" alt=":)" id="smiley">
-                </div>
             </div>
 
             <div class="indent" id="timer">
@@ -158,6 +156,30 @@
         </div>
 
         <div class="indent" id="minesweeper_field">
+
+        </div>
+
+        <div class="indent hidden" id="arcade_stats">
+
+            <div id="arcade_streak_counter" class="indent">
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="streak_100">
+                </div>
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="streak_10">
+                </div>
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="streak_1">
+                </div>
+
+            </div>
+            
+            <div class="extrude" id="next_button">
+                <img src="images/question_mark.png" alt="Next" id="next_button_image">
+            </div>
 
         </div>
 

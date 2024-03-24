@@ -6,22 +6,40 @@ window.addEventListener("load", init);
 let minesweeperWindow;
 let minesweeperSettings;
 let minesweeperSettingsForm;
+let minesweeperField;
+
 let bestTimes;
+let smiley;
+let resetButton;
+let nextButton;
+let nextButtonImage;
+
 let timer = null;
 let time = 0;
 let timer1;
 let timer10;
 let timer100;
+
+let remainingFlags = 10;
 let count1;
 let count10;
 let count100;
-let firstClick = true;
-let minesweeperField;
-let smiley;
-let resetButton;
+
+let arcadeStreak = 0;
+let streak1;
+let streak10;
+let streak100;
+
 let gameOver;
+let firstClick = true;
+
+let arcadeUnlock = false;
+let arcadeMode = false;
+let arcadeLoss = false;
+let arcadeWin = false;
+
 let surroundingEmptyTiles = [];
-let remainingFlags = 10;
+
 const difficultySettings = {
     beginner: {
         width: 8,
@@ -48,6 +66,7 @@ const difficultySettings = {
         totalTiles: 64
     }
 };
+
 let currentDifficulty = difficultySettings.beginner;
 
 
@@ -71,20 +90,37 @@ function init() {
     count10 = document.getElementById('count_10');
     count100 = document.getElementById('count_100');
 
+    //Get the streak counter images
+    streak1 = document.getElementById('streak_1');
+    streak10 = document.getElementById('streak_10');
+    streak100 = document.getElementById('streak_100');
+
     //Get the smiley image
     smiley = document.getElementById('smiley');
 
+    //Get the reset button and make it reset minesweeper if clicked
     resetButton = document.getElementById('reset_button');
     resetButton.addEventListener('click', resetMinesweeper);
+    resetButton.addEventListener('mousedown', buttonPresser);
+    resetButton.addEventListener('mouseup', buttonPresser);
 
-    document.getElementById('minesweeper_shortcut').addEventListener('dblclick', () => {
+    //Get the next button and make it handle increasing the arcade difficulty
+    nextButton = document.getElementById('next_button');
+    nextButton.addEventListener('click', arcadeDifficultyHandler);
+    nextButton.addEventListener('mousedown', buttonPresser);
+    nextButton.addEventListener('mouseup', buttonPresser);
+
+    //Get the next button image for styling later
+    nextButtonImage = document.getElementById('next_button_image');
+
+    //Get the minesweeper shortcut and make it open the minesweeper window if double-clicked
+    document.getElementById('minesweeper_shortcut').addEventListener('dblclick', (e) => {
         minesweeperWindow.show();
         setMinesweeperField();
-        resetMinesweeper();
+        resetMinesweeper(e);
     })
 
     minesweeperSettings = document.getElementById('minesweeper_settings_dropdown');
-
 
     const closeButtons = document.getElementsByClassName('close');
     for (const closeButton of closeButtons) {
@@ -111,6 +147,12 @@ function init() {
 
     bestTimes = document.getElementById('bestTimeDialog');
 
+    //Get all images to prevent dragging
+    let allImages = document.getElementsByTagName('img');
+    for (let image of allImages) {
+        image.draggable = false;
+    }
+
 }
 
 function setMinesweeperField() {
@@ -131,6 +173,7 @@ function setMinesweeperField() {
 
         //Create an image element
         let img = document.createElement('img');
+        img.draggable = false;
 
         //Then add it to the div
         tile.appendChild(img);
@@ -157,10 +200,14 @@ function setMinesweeperField() {
 
     }
 
-
 }
 
-function resetMinesweeper() {
+function resetMinesweeper(e) {
+
+    if (e.target.id === 'reset_button' && arcadeMode || e.target.id === 'smiley' && arcadeMode) {
+        arcadeLoss = true;
+        arcadeWin = false;
+    }
 
     //Set gameOver to false
     gameOver = false;
@@ -171,12 +218,35 @@ function resetMinesweeper() {
         timer = null;
     }
 
-    //Reset time
-    time = 0;
-    updateTimer();
+    //Reset time if it's not arcade mode
+    if (!arcadeMode || arcadeLoss) {
+        time = 0;
+        updateTimer();
+    }
+
+    if (arcadeLoss) {
+
+        //Reset the streak
+        arcadeStreak = 0
+        updateStreak();
+
+        //Reset the difficulty scale
+        currentDifficulty.width = 8;
+        currentDifficulty.height = 8;
+        currentDifficulty.mines = 5;
+        currentDifficulty.totalTiles = 64;
+
+        setMinesweeperField();
+        arcadeLoss = false;
+    }
 
     //Revive the smiley or steal their sunglasses
     smiley.src = 'images/smiley_happy.png';
+
+    //Reset next button
+    if (arcadeMode) {
+        nextButtonImage.src = 'images/question_mark.png'
+    }
 
     //Reset remaining flags
     remainingFlags = currentDifficulty.mines;
@@ -494,6 +564,11 @@ function dig(tile) {
 
         showAllMines();
 
+        if (arcadeMode) {
+            arcadeLoss = true;
+            nextButtonImage.src = 'images/wrong_flag.png';
+        }
+
         return;
     }
 
@@ -571,6 +646,19 @@ function checkWin() {
 
     smiley.src = 'images/smiley_win.png';
 
+    if (arcadeMode) {
+        arcadeStreak++;
+        updateStreak();
+        arcadeWin = true;
+        nextButtonImage.src = 'images/next.png';
+    }
+
+    if (!arcadeUnlock) {
+        document.getElementById('arcade').classList.remove('hidden');
+        document.querySelector('label.hidden').classList.remove('hidden');
+        arcadeUnlock = true;
+    }
+
 }
 
 function smileyHandler(e) {
@@ -614,6 +702,16 @@ function updateFlagDisplay() {
 
 }
 
+function updateStreak() {
+
+    streak100.src = `images/timer_${(Math.floor(arcadeStreak / 100)) % 10}.png`;
+
+    streak10.src = `images/timer_${(Math.floor(arcadeStreak / 10)) % 10}.png`;
+
+    streak1.src = `images/timer_${arcadeStreak % 10}.png`;
+
+}
+
 function settingsClickHandler(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') {
         return;
@@ -621,7 +719,7 @@ function settingsClickHandler(e) {
 
     switch (e.target.id) {
         case "reset_minesweeper":
-            resetMinesweeper();
+            resetMinesweeper(e);
             break;
 
         case "best_times":
@@ -656,7 +754,72 @@ function changeDifficulty(e) {
             break;
     }
 
+    arcadeMode = e.target.value === 'arcade';
+
+    if (arcadeMode) {
+        arcadeLoss = true;
+        resetMinesweeper(e);
+        return;
+    }
+
     setMinesweeperField();
-    resetMinesweeper();
+    resetMinesweeper(e);
+
+}
+
+function arcadeDifficultyHandler(e) {
+
+    if (arcadeLoss || !arcadeWin) {
+        return;
+    }
+
+    arcadeWin = false;
+
+    if (currentDifficulty.mines < 512) {
+        currentDifficulty.mines += 2;
+
+        if (currentDifficulty.mines > 512) {
+            currentDifficulty.mines = 512;
+        }
+
+    }
+
+    let fieldChange = false;
+
+    if (arcadeStreak > 0) {
+
+        if ((arcadeStreak % 2) === 0 && currentDifficulty.width < 32) {
+            currentDifficulty.width++;
+            fieldChange = true;
+        }
+
+        if ((arcadeStreak % 4) === 0 && currentDifficulty.height < 32) {
+            currentDifficulty.height++;
+            fieldChange = true;
+
+        }
+
+    }
+
+    if (fieldChange) {
+        currentDifficulty.totalTiles = currentDifficulty.width * currentDifficulty.height;
+        setMinesweeperField();
+    }
+
+    resetMinesweeper(e);
+
+}
+
+function buttonPresser(e) {
+
+    let button;
+    if (e.target.tagName === 'IMG') {
+        button = e.target.parentElement;
+    } else {
+        button = e.target;
+    }
+
+    button.classList.toggle('extrude');
+    button.classList.toggle('indent');
 
 }

@@ -72,6 +72,7 @@ div > img {
     gap: 5px;
 }
 
+
 .shortcut {
     width: 100px;
     height: 100px;
@@ -223,7 +224,6 @@ div > img {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /*height: 58px;*/
     padding: 13px;
 }
 
@@ -247,6 +247,7 @@ div > img {
     align-items: center;
     width: 42px;
     height: 42px;
+    cursor: pointer;
 }
 
 #smiley > div {
@@ -294,6 +295,36 @@ div[data-question='true'] img {
     background-color: red;
 }
 
+#arcade_stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+#arcade_streak_counter {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    padding: 6px;
+}
+
+#arcade_streak_counter > div {
+    max-width: 22px;
+    max-height: 42px;
+}
+
+#next_button {
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+}
+
+#next_button.ok {
+    cursor: pointer;
+}
 
 footer {
     padding: 6px;
@@ -328,4 +359,8 @@ footer p,
 
 #time_display {
     padding: 6px;
+}
+
+.hidden {
+    display: none;
 }
