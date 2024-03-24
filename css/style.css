@@ -100,7 +100,7 @@ div > img {
     background-color: darkblue;
     color: white;
     height: 30px;
-    padding: 5px;
+    padding: 5px 2px;
 }
 
 .program_name {
@@ -122,8 +122,27 @@ div > img {
 .window_buttons {
     display: flex;
     flex-direction: row;
-    padding: 5px;
-    gap: 4px;
+    padding: 2px;
+    gap: 2px;
+    cursor: pointer;
+}
+
+.window_button {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    box-shadow: inset -1px -1px #808080,
+    inset 1px 1px #FFFFFF,
+    inset -2px -2px #404040,
+    inset 2px 2px #FFFFFF;
+    background-color: rgb(192, 192, 192);
+}
+
+.window_button img {
+    width: 100%;
+    object-fit: contain;
 }
 
 #minesweeper_window {
@@ -148,6 +167,20 @@ div > img {
     display: none;
     padding: 6px 8px;
     width: 200px;
+}
+
+#minesweeper_settings_dropdown_button {
+    cursor: pointer;
+}
+
+#minesweeper_settings_dropdown_button:active {
+    background-color: rgb(192, 192, 192);
+    box-shadow: inset -1px -1px #FFFFFF,
+    inset 1px 1px #808080,
+    inset -2px -2px #FFFFFF,
+    inset 2px 2px #808080,
+    inset -3px -3px #FFFFFF,
+    inset 3.25px 3.25px #808080;
 }
 
 #minesweeper_settings > div {

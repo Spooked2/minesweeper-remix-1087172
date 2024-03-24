@@ -88,8 +88,8 @@ function init() {
 
     const closeButtons = document.getElementsByClassName('close');
     for (const closeButton of closeButtons) {
-        closeButton.addEventListener('click', (e) => {
-            e.target.parentElement.parentElement.parentElement.close();
+        closeButton.addEventListener('click', () => {
+            minesweeperWindow.close();
         })
     }
 
