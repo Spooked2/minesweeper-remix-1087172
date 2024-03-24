@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<dialog id="bestTimeDialog">
+    <article>
+        best times!
+    </article>
+</dialog>
+
 <dialog class="extrude" id="minesweeper_window">
 
     <div class="window_top">
@@ -37,58 +43,115 @@
     <div class="window_body">
 
         <div class="settings">
-            <form action="" id="minesweeper_settings">
 
-            </form>
+            <p id="minesweeper_settings_dropdown_button"><u>G</u>ame</p>
+
+            <div id="minesweeper_settings_dropdown" class="extrude">
+
+                <form action="" id="minesweeper_settings">
+
+                    <div id="reset_minesweeper">
+
+                        <div>
+                            <u>N</u>ew
+                        </div>
+
+                        <div>
+                            F2
+                        </div>
+
+                    </div>
+
+                    <div id="difficulties">
+
+                        <div>
+                            <input type="radio" name="difficulty" id="beginner" value="beginner" checked>
+                            <label for="beginner"><u>B</u>eginner</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="difficulty" id="intermediate" value="intermediate">
+                            <label for="intermediate"><u>I</u>ntermediate</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="difficulty" id="expert" value="expert">
+                            <label for="expert"><u>E</u>xpert</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="difficulty" id="arcade" value="arcade" disabled>
+                            <label for="arcade"><u>A</u>rcade</label>
+                        </div>
+
+                    </div>
+
+                    <div id="best_times">Best <u>T</u>imes</div>
+
+                    <div id="exit_minesweeper">E<u>x</u>it</div>
+
+                </form>
+
+            </div>
+
         </div>
 
-        <div class="extrude" id="minesweeper_container">
+        <div id="minesweeper_help_dropdown_button">
+            <u>H</u>elp
 
-            <div class="indent" id="minesweeper_stats">
+            <dialog id="minesweeper_help_dropdown" class="extrude">
+                <button hidden><u>H</u>ow to play minesweeper</button>
+            </dialog>
 
-                <div class="indent" id="mine_count">
+        </div>
 
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
+    </div>
 
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
+    <div class="extrude" id="minesweeper_container">
 
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
+        <div class="indent" id="minesweeper_stats">
 
+            <div class="indent" id="mine_count">
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="count_100">
                 </div>
 
-                <div class="extrude" id="reset_button">
-                    <div>
-                        <img src="images/smiley_happy.png" alt=":)" id="smiley">
-                    </div>
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="count_10">
                 </div>
 
-                <div class="indent" id="timer">
-
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
-
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
-
-                    <div>
-                        <img src="images/timer_0.png" alt="timer number">
-                    </div>
-
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="count_1">
                 </div>
 
             </div>
 
-            <div class="indent" id="minesweeper_field">
+            <div class="extrude" id="reset_button">
+                <div>
+                    <img src="images/smiley_happy.png" alt=":)" id="smiley">
+                </div>
+            </div>
+
+            <div class="indent" id="timer">
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="timer_100">
+                </div>
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="timer_10">
+                </div>
+
+                <div>
+                    <img src="images/timer_0.png" alt="timer number" id="timer_1">
+                </div>
 
             </div>
+
+        </div>
+
+        <div class="indent" id="minesweeper_field">
 
         </div>
 
@@ -181,7 +244,7 @@
             <img src="images/start_logo.png" alt="Windows 98 logo">
         </div>
 
-        <p>START</p>
+        <p>Start</p>
 
     </div>
 
