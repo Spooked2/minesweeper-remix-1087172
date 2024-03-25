@@ -38,7 +38,7 @@
                 <img src="images/maximize_disabled.png" alt="max">
             </div>
 
-            <div class="window_button close">
+            <div class="window_button" id="minesweeper_close">
                 <img src="images/close.png" alt="close" class="close">
             </div>
 
@@ -134,7 +134,7 @@
             </div>
 
             <div class="extrude" id="reset_button">
-                    <img src="images/smiley_happy.png" alt=":)" id="smiley">
+                <img src="images/smiley_happy.png" alt=":)" id="smiley">
             </div>
 
             <div class="indent" id="timer">
@@ -176,7 +176,7 @@
                 </div>
 
             </div>
-            
+
             <div class="extrude" id="next_button">
                 <img src="images/question_mark.png" alt="Next" id="next_button_image">
             </div>
@@ -187,40 +187,88 @@
 
 </dialog>
 
-<dialog id="solitaire_window">
+<dialog id="noteDialog">
 
-    <div class="window_top">
+    <div id="noteContent" class="extrude">
 
-        <div class="program_name">
 
-            <div>
-                <img src="images/solitaire.png" alt="Solitaire logo">
+        <div class="window_top">
+
+            <div class="program_name">
+
+                <div>
+                    <img src="images/notepad.png" alt="Notepad">
+                </div>
+
+                <h2>Verantwoording</h2>
+
             </div>
 
-            <h2>Solitaire-sweeper</h2>
+            <div class="window_buttons">
+
+                <div class="window_button">
+                    <img src="images/minimize_disabled.png" alt="min">
+                </div>
+
+                <div class="window_button">
+                    <img src="images/maximize_disabled.png" alt="max">
+                </div>
+
+                <div class="window_button" id="closeNote">
+                    <img src="images/close.png" alt="close">
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="window_buttons">
+        <div id="noteBody">
 
-            <button class="extrude">
-                <img src="images/minimize_disabled.png" alt="min">
-            </button>
+            <h1>Verantwoording voor techniekfilosofie 3</h1>
+            <p>Sander Landmeter - 1087172</p>
 
-            <button class="extrude">
-                <img src="images/maximize_disabled.png" alt="max">
-            </button>
+            <h2>Inleiding</h2>
 
-            <button class="extrude">
-                <img src="images/close.png" alt="close">
-            </button>
+            <p>
+                Voor deze remix opdracht had ik al snel een idee: een muziek parodie van een geweldig jaren-80 nummer.
+                Zoals te zien is aan de presentatie van het uiteindelijke product is dit het niet geworden.
+                In plaats daarvan had ik gekozen om minesweeper na te maken, specifiek de windows 98 versie.
+                Tijdens de programmeren-3 lessen kreeg ik het idee om dit spelletje na te maken, maar kreeg pas later het idee
+                om dit volledig uit te werken voor dit vak.
+                Nadat ik minesweeper nagemaakt had, wou ik het transformeren door er een arcade versie aan toe te voegen
+                die elke keer als je wint het volgende veld moeilijker maakt.
+                Als laatste wou ik dit gaan combineren met solitaire; een ander klassiek spel.
+                Dit was ik van plan te gaan doen door de trekstapel te vervangen met een potje minesweeper,
+                en als die gewonnen wordt krijg je iets; de volgende kaart of een hele stapel te zien.
+            </p>
+
+            <h2>Kopiëren</h2>
+
+            <p>
+                Maar als eerst: het Kopiëren. Ik wou echt specifiek de windows 98 versie namaken
+                omdat ik dacht dat het namaken van een heel windows 98 desktop interessant zou zijn.
+                Aan de ene kant was het erg leuk om dit te doen, maar aan de andere is het nu 4 uur 's nachts terwijl ik dit typ.
+                Door de hele omgeving na te maken wou ik de ervaring van het spelen van minesweeper op een oude computer zo goed mogelijk te maken.
+            </p>
+
+            <p>
+                Het belangrijkste is natuurlijk het spel. Als je op het minesweeper icoon dubbel klikt dan zou die open moeten gaan.
+                Ik heb ervoor geprobeerd om alle features die in de windows 98 versie zaten te programmeren, maar helaas kwam ik in tijdnood
+                doordat pixel-art en frontend toch best veel tijd innamen. Wel heb ik alles wat je zou verwachten, en het spel werkt.
+                Je kan winnen, verliezen, vlaggen & vraagtekens plaatsen en verschillende moeilijkheidsgraden kiezen. Zelfs de smiley werk!
+                Het kostte behoorlijk veel tijd om alle plaatjes zelf te maken op basis van een wikipedia foto die enorm slecht te zien is,
+                maar er zijn blijkbaar erg weinig plaatjes op het internet van de exacte versie die ik wou maken.
+            </p>
+
+            <h2>Transformeren</h2>
+
+            <p>
+                De volgende stap in het remix-proces is het veranderen van iets in het gekopiëerde werk.
+            </p>
+
+            <div id="mystery_button" class="extrude">Knop?</div>
 
         </div>
-
-    </div>
-
-    <div class="window_body">
-
 
     </div>
 
@@ -249,7 +297,7 @@
             <img src="images/notepad.png" alt="text file">
         </div>
 
-        <p>Notepad.txt</p>
+        <p>Verantwoording.txt</p>
     </div>
 
     <div class="shortcut" id="minesweeper_shortcut">
@@ -289,6 +337,46 @@
     </div>
 
 </footer>
+
+<dialog id="mystery_dialog">
+
+    <div id="mystery_body" class="extrude">
+
+        <div class="window_top">
+
+            <div class="program_name">
+
+                <div>
+                    <img src="images/media_player.png" alt="Media Player logo">
+                </div>
+
+                <h3>Windows Media Player - Best hit 1987</h3>
+
+            </div>
+
+            <div class="window_buttons">
+
+                <div class="window_button">
+                    <img src="images/minimize_disabled.png" alt="min">
+                </div>
+
+                <div class="window_button">
+                    <img src="images/maximize_disabled.png" alt="max">
+                </div>
+
+                <div class="window_button" id="mystery_close">
+                    <img src="images/close.png" alt="close" class="close">
+                </div>
+
+            </div>
+
+        </div>
+
+        <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="mystery"></iframe>
+
+    </div>
+
+</dialog>
 
 </body>
 </html>

@@ -3,6 +3,13 @@ window.addEventListener("load", init);
 
 //Global variables
 
+let noteDialog;
+let noteShortcut;
+
+let mysteryDialog
+let mysteryButton;
+let mystery;
+
 let minesweeperWindow;
 let minesweeperSettings;
 let minesweeperSettingsForm;
@@ -74,6 +81,40 @@ let currentDifficulty = difficultySettings.beginner;
 
 function init() {
 
+    noteDialog = document.getElementById('noteDialog');
+
+    noteShortcut = document.getElementById('text_file');
+    noteShortcut.addEventListener('dblclick', () => {
+        noteDialog.show();
+    })
+
+    let closeNote = document.getElementById('closeNote');
+    closeNote.addEventListener('click', () => {
+        noteDialog.close();
+    })
+
+    mystery = document.getElementById('mystery');
+
+    mysteryDialog = document.getElementById('mystery_dialog');
+    mysteryDialog.addEventListener('click', (e) => {
+        if (e.target.tagName === 'DIALOG') {
+            mysteryDialog.close();
+            mystery.src = '';
+        }
+    })
+
+    mysteryButton = document.getElementById('mystery_button');
+    mysteryButton.addEventListener('click', () => {
+        mysteryDialog.showModal();
+        mystery.src = 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&amp;modestbranding=1&amp;showinfo=0&amp;start=0';
+    })
+
+    let mysteryClose = document.getElementById('mystery_close');
+    mysteryClose.addEventListener('click', () => {
+        mysteryDialog.close();
+        mystery.src = '';
+    })
+
     minesweeperField = document.getElementById('minesweeper_field');
     minesweeperField.addEventListener('click', minesweeperClickHandler);
     minesweeperField.addEventListener('contextmenu', flagHandler);
@@ -113,6 +154,13 @@ function init() {
     //Get the next button image for styling later
     nextButtonImage = document.getElementById('next_button_image');
 
+    minesweeperWindow = document.getElementById('minesweeper_window');
+    minesweeperWindow.addEventListener('click', (e) => {
+        if (e.target !== minesweeperSettings && e.target !== minesweeperSettingsDropdownButton && e.target.tagName !== 'U') {
+            minesweeperSettings.style.display = 'none';
+        }
+    })
+
     //Get the minesweeper shortcut and make it open the minesweeper window if double-clicked
     document.getElementById('minesweeper_shortcut').addEventListener('dblclick', (e) => {
         minesweeperWindow.show();
@@ -122,23 +170,14 @@ function init() {
 
     minesweeperSettings = document.getElementById('minesweeper_settings_dropdown');
 
-    const closeButtons = document.getElementsByClassName('close');
-    for (const closeButton of closeButtons) {
-        closeButton.addEventListener('click', () => {
-            minesweeperWindow.close();
-        })
-    }
-
     const minesweeperSettingsDropdownButton = document.getElementById('minesweeper_settings_dropdown_button');
     minesweeperSettingsDropdownButton.addEventListener('click', () => {
         minesweeperSettings.style.display = 'block';
     })
 
-    minesweeperWindow = document.getElementById('minesweeper_window');
-    minesweeperWindow.addEventListener('click', (e) => {
-        if (e.target !== minesweeperSettings && e.target !== minesweeperSettingsDropdownButton && e.target.tagName !== 'U') {
-            minesweeperSettings.style.display = 'none';
-        }
+    let minesweeperClose = document.getElementById('minesweeper_close');
+    minesweeperClose.addEventListener('click', () => {
+        minesweeperWindow.close();
     })
 
     minesweeperSettingsForm = document.getElementById('minesweeper_settings');
@@ -152,6 +191,7 @@ function init() {
     for (let image of allImages) {
         image.draggable = false;
     }
+
 
 }
 

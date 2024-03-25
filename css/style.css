@@ -35,8 +35,7 @@ body {
 }
 
 dialog {
-    padding: 3px;
-    margin: 15vh auto;
+    margin: 10vh auto;
     border: none;
 }
 
@@ -82,6 +81,7 @@ div > img {
     flex-direction: column;
     align-items: center;
     padding: 4px;
+    margin-left: 10px;
     justify-content: space-evenly;
     cursor: pointer;
 }
@@ -151,6 +151,7 @@ div > img {
 #minesweeper_window {
     width: fit-content;
     height: fit-content;
+    padding: 6px;
 }
 
 .window_body {
@@ -365,4 +366,50 @@ footer p,
 
 .hidden {
     display: none;
+}
+
+#noteContent {
+    min-width: 1000px;
+    padding: 8px;
+}
+
+#noteBody {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    max-height: 600px;
+    max-width: 1000px;
+    overflow: auto;
+}
+
+#noteBody p,
+#noteBody h1,
+#noteBody h2 {
+    user-select: text;
+}
+
+#noteBody h2 {
+    margin-top: 15px;
+}
+
+#mystery_button {
+    padding: 8px;
+    width: min-content;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+}
+
+#mystery_dialog {
+    margin: 20px auto;
+    padding: 0;
+}
+
+#mystery_body {
+    padding: 6px;
+}
+
+iframe {
+    width: 1200px;
+    height: 800px;
 }
