@@ -392,6 +392,10 @@ footer p,
     margin-top: 15px;
 }
 
+#noteBody p {
+    margin-top: 8px;
+}
+
 #mystery_button {
     padding: 8px;
     width: min-content;
